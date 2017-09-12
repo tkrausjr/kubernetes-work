@@ -1,0 +1,1697 @@
+Script started on Tue Sep 12 10:45:20 2017
+[?1034hsh-3.2# 
+sh-3.2# 
+sh-3.2# 
+sh-3.2# 
+sh-3.2# ls
+pod-practice-1.yml			pods-rcs-services-practice-log.log
+sh-3.2# kubectl create -f pod-practice-1.yml 
+pod "hello-pod" created
+sh-3.2# kubectl get pods
+NAME        READY     STATUS    RESTARTS   AGE
+hello-pod   1/1       Running   0          2m
+sh-3.2# kubectl get pods[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[Kkubectl 
+sh: kubekubectl: command not found
+sh-3.2# kubectl describe pods
+Name:		hello-pod
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 10:46:52 -0400
+Labels:		<none>
+Annotations:	<none>
+Status:		Running
+IP:		172.17.0.4
+Containers:
+  hello-ctr:
+    Container ID:	docker://755addac7a390c79a6d0d04b409bc3640943d84213e0491a097d6682d9cd1f50
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 10:46:53 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath			Type		Reason			Message
+  ---------	--------	-----	----			-------------			--------	------			-------
+  2m		2m		1	default-scheduler					Normal		Scheduled		Successfully assigned hello-pod to minikube
+  2m		2m		1	kubelet, minikube					Normal		SuccessfulMountVolume	MountVolume.SetUp succeeded for volume "default-token-gdkd3" 
+  2m		2m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Pulling			pulling image "nigelpoulton/pluralsight-docker-ci:latest"
+  2m		2m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Pulled			Successfully pulled image "nigelpoulton/pluralsight-docker-ci:latest"
+  2m		2m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Created			Created container
+  2m		2m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Started			Started container
+sh-3.2# kubectl describe pods/hj[Kello-world
+Error from server (NotFound): pods "hello-world" not found
+sh-3.2# kubectl describe pods/hello-world[K
+Name:		hello-pod
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 10:46:52 -0400
+Labels:		<none>
+Annotations:	<none>
+Status:		Running
+IP:		172.17.0.4
+Containers:
+  hello-ctr:
+    Container ID:	docker://755addac7a390c79a6d0d04b409bc3640943d84213e0491a097d6682d9cd1f50
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 10:46:53 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath			Type		Reason			Message
+  ---------	--------	-----	----			-------------			--------	------			-------
+  3m		3m		1	default-scheduler					Normal		Scheduled		Successfully assigned hello-pod to minikube
+  3m		3m		1	kubelet, minikube					Normal		SuccessfulMountVolume	MountVolume.SetUp succeeded for volume "default-token-gdkd3" 
+  3m		3m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Pulling			pulling image "nigelpoulton/pluralsight-docker-ci:latest"
+  3m		3m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Pulled			Successfully pulled image "nigelpoulton/pluralsight-docker-ci:latest"
+  3m		3m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Created			Created container
+  3m		3m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Started			Started container
+sh-3.2# kubectl describe pods[K[K[K[K[K[K[K[K[K[K[K[K[Khey[K[K[Kget pods/hellow-world
+Error from server (NotFound): pods "hellow-world" not found
+sh-3.2# kubectl get pods/hellow-world[K[K[K[K[K[K[K[K[K[K[K[K[K describe pods[4Pget pods [K/hello-pod
+NAME        READY     STATUS    RESTARTS   AGE
+hello-pod   1/1       Running   0          4m
+sh-3.2# kubectl get pods/hello-pod[1P pods/hello-pod[1P pods/hello-pod[1P pods/hello-pod[1Ppods/hello-pod[C pods/hello-podd pods/hello-pode pods/hello-pods pods/hello-podc pods/hello-podr pods/hello-podi pods/hello-podb pods/hello-pode pods/hello-pod
+Name:		hello-pod
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 10:46:52 -0400
+Labels:		<none>
+Annotations:	<none>
+Status:		Running
+IP:		172.17.0.4
+Containers:
+  hello-ctr:
+    Container ID:	docker://755addac7a390c79a6d0d04b409bc3640943d84213e0491a097d6682d9cd1f50
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 10:46:53 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath			Type		Reason			Message
+  ---------	--------	-----	----			-------------			--------	------			-------
+  4m		4m		1	default-scheduler					Normal		Scheduled		Successfully assigned hello-pod to minikube
+  4m		4m		1	kubelet, minikube					Normal		SuccessfulMountVolume	MountVolume.SetUp succeeded for volume "default-token-gdkd3" 
+  4m		4m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Pulling			pulling image "nigelpoulton/pluralsight-docker-ci:latest"
+  4m		4m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Pulled			Successfully pulled image "nigelpoulton/pluralsight-docker-ci:latest"
+  4m		4m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Created			Created container
+  4m		4m		1	kubelet, minikube	spec.containers{hello-ctr}	Normal		Started			Started container
+sh-3.2# kubectl describe pods/hello-pod[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kget pd[Kods --all-namespaces
+NAMESPACE     NAME                          READY     STATUS    RESTARTS   AGE
+default       hello-pod                     1/1       Running   0          5m
+kube-system   kube-addon-manager-minikube   1/1       Running   2          19h
+kube-system   kube-dns-910330662-jtzhx      3/3       Running   6          19h
+kube-system   kubernetes-dashboard-580rd    1/1       Running   2          19h
+sh-3.2# NOTE - Will not usually work with PODS like this - because it is imperative
+sh: NOTE: command not found
+sh-3.2# NOTE - We will use Replication Controllers/ Services as they are higher level and DECLARATIVE.
+sh: NOTE: command not found
+sh-3.2# 
+sh-3.2# 
+sh-3.2# wget https://192.168.64.3:8443/ui
+sh: wget: command not found
+sh-3.2# wget https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[1P https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[1P https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[1P https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[1P https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[Cc https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[Cu https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[Cr https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[Cl https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[C https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[C- https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[C[Cv https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cv https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cv https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P https://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+*   Trying 192.168.64.3...
+* TCP_NODELAY set
+* Connected to 192.168.64.3 (192.168.64.3) port 8443 (#0)
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Users/kraust/anaconda/ssl/cacert.pem
+  CApath: none
+* TLSv1.2 (OUT), TLS header, Certificate Status (22):
+* TLSv1.2 (OUT), TLS handshake, Client hello (1):
+* TLSv1.2 (IN), TLS handshake, Server hello (2):
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+* TLSv1.2 (OUT), TLS alert, Server hello (2):
+* SSL certificate problem: unable to get local issuer certificate
+* Curl_http_done: called premature == 1
+* Closing connection 0
+* TLSv1.2 (OUT), TLS alert, Client hello (1):
+curl: (60) SSL certificate problem: unable to get local issuer certificate
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl performs SSL certificate verification by default, using a "bundle"
+ of Certificate Authority (CA) public keys (CA certs). If the default
+ bundle file isn't adequate, you can specify an alternate file
+ using the --cacert option.
+If this HTTPS server uses a certificate signed by a CA represented in
+ the bundle, the certificate verification probably failed due to a
+ problem with the certificate (it might be expired, or the name might
+ not match the domain name in the URL).
+If you'd like to turn off curl's verification of the certificate, use
+ the -k (or --insecure) option.
+sh-3.2# curl -v https://192.168.64.3:8443/ui[1Phttps://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Phttps://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Phttps://192.168.64.3:8443/ui[C[C[C[C[C[C[C[C[C[C[C[C[C
+curl: (60) SSL certificate problem: unable to get local issuer certificate
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl performs SSL certificate verification by default, using a "bundle"
+ of Certificate Authority (CA) public keys (CA certs). If the default
+ bundle file isn't adequate, you can specify an alternate file
+ using the --cacert option.
+If this HTTPS server uses a certificate signed by a CA represented in
+ the bundle, the certificate verification probably failed due to a
+ problem with the certificate (it might be expired, or the name might
+ not match the domain name in the URL).
+If you'd like to turn off curl's verification of the certificate, use
+ the -k (or --insecure) option.
+sh-3.2# pwd
+/Users/kraust/gitHub/kubernetes-work/Pods
+sh-3.2# ls
+pod-practice-1.yml			pods-rcs-services-practice-log.log
+sh-3.2# cd ../R
+README.md               Replication-Controller/ 
+sh-3.2# cd ../R[KReplication-Controller/
+sh-3.2# kubectl delete hello-pod
+error: resource(s) were provided, but no name, label selector, or --all flag specified
+sh-3.2# kubectl delete hello-podphello-podohello-poddhello-pod hello-pod
+pod "hello-pod" deleted
+sh-3.2# cat [K[K[K[Kls
+rc.yml
+sh-3.2# cat rc.yml 
+apiVersion: v1
+kind: ReplicationController
+metadata:
+    name: hello-rc
+spec:
+  replicas: 10
+  selector:
+      app: hello-world
+  template:
+      metadata:
+        labels:
+            app: hello-world
+      spec:
+        containers:
+        - name: hello-pod
+        image: nigelpoulton/pluralsight-docker-ci:latest
+        ports:
+        - containerPort: 8080sh-3.2# 
+sh-3.2# 
+sh-3.2# 
+sh-3.2# kubec[K[K[K[K[K[14@(reverse-i-search)`':[Ck': kubectl delete pod hello-pod[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@u[C[C[C[1@b[C[C[C[17Psh-3.2#[C[14@(reverse-i-search)`':[C[3@kub[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Phello-pod[C[C[C[C[C[C[C[Cget pods --all-namespaces[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[2Pdescribe pods/hello-pod[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[5Pget[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cw-world[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pdescribe pods[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C/hello-world[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[C[C[C[C[9Pkubectl [C[C[C[Cctl get pods[C[C[C[C[C[C[C[Ccreate -f pod-practice-1.yml [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[17Psh-3.2#[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Krc.yml 
+error: error validating "rc.yml": error validating data: [field spec.template.spec.containers[0].image for v1.Container is required, found invalid field image for v1.PodSpec, found invalid field ports for v1.PodSpec]; if you choose to ignore these errors, turn validation off with --validate=false
+sh-3.2# vi rc.yml 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;27r[?12;25h[?12l[?25h[27m[m[94m[100m[H[2J[?25l[27;1H"rc.yml" [noeol] 18L, 360C[>c[1;1H[34mapiVersion[m[94m[100m[31m:[m[94m[100m v1
+[34mkind[m[94m[100m[31m:[m[94m[100m ReplicationController
+[34mmetadata[m[94m[100m[31m:[m[94m[100m
+    [34mname[m[94m[100m[31m:[m[94m[100m hello-rc
+[34mspec[m[94m[100m[31m:[m[94m[100m
+  [34mreplicas[m[94m[100m[31m:[m[94m[100m [36m10[m[94m[100m
+  [34mselector[m[94m[100m[31m:[m[94m[100m[8;7H[34mapp[m[94m[100m[31m:[m[94m[100m hello-world
+  [34mtemplate[m[94m[100m[31m:[m[94m[100m[10;7H[34mmetadata[m[94m[100m[31m:[m[94m[100m[11;9H[34mlabels[m[94m[100m[31m:[m[94m[100m[12;13H[34mapp[m[94m[100m[31m:[m[94m[100m hello-world[13;7H[34mspec[m[94m[100m[31m:[m[94m[100m[14;9H[34mcontainers[m[94m[100m[31m:[m[94m[100m[15;9H[32m- [m[94m[100m[34mname[m[94m[100m[31m:[m[94m[100m hello-pod[16;9H[34mimage[m[94m[100m[31m:[m[94m[100m nigelpoulton/pluralsight-docker-ci:latest[17;9H[34mports[m[94m[100m[31m:[m[94m[100m[18;9H[32m- [m[94m[100m[34mcontainerPort[m[94m[100m[31m:[m[94m[100m [36m8080[m[94m[100m
+[1m[92m~                                                                                                                                                                                        [20;1H~                                                                                                                                                                                        [21;1H~                                                                                                                                                                                        [22;1H~                                                                                                                                                                                        [23;1H~                                                                                                                                                                                        [24;1H~                                                                                                                                                                                        [25;1H~                                                                                                                                                                                        [26;1H~                                                                                                                                                                                        [1;1H[?12l[?25h
+
+
+
+[4;1H[m[94m[100m    [?25l[27;1H[34m-- INSERT --[m[94m[100m[27;13H[K[4;5H[?12l[?25h[?25l[34mname[m[94m[100m[31m:[m[94m[100m hello-rc[4;18H[K[4;4H[?12l[?25h[?25l[34mname[m[94m[100m[31m:[m[94m[100m hello-rc[4;17H[K[4;3H[?12l[?25h[?25l[34mname[m[94m[100m[31m:[m[94m[100m hello-rc[4;16H[K[4;2H[?12l[?25h[?25l[34mname[m[94m[100m[31m:[m[94m[100m hello-rc[4;15H[K[4;1H[?12l[?25h[?25l [34mname[m[94m[100m[31m:[m[94m[100m hello-rc [?12l[?25h[?25l [34mname[m[94m[100m[31m:[m[94m[100m hello-rc  [?12l[?25h[5;3H
+  
+  
+      [?25l[34map[m[94m[100m[1C[31m:[m[94m[100m hello-world[8;22H[K[8;6H[?12l[?25h[?25l[34map[m[94m[100m[1C[31m:[m[94m[100m hello-world[8;21H[K[8;5H[?12l[?25h[9;5H
+      [?25l[34mmetadata[m[94m[100m[31m:[m[94m[100m[10;15H[K[10;6H[?12l[?25h[?25l[34mmetadata[m[94m[100m[31m:[m[94m[100m[10;14H[K[10;5H[?12l[?25h
+        [?25l[34mlabels[m[94m[100m[31m:[m[94m[100m[11;15H[K[11;8H[?12l[?25h[?25l[34mlabels[m[94m[100m[31m:[m[94m[100m[11;14H[K[11;7H[?12l[?25h[12;7H      [?25l[34map[m[94m[100m[1C[31m:[m[94m[100m hello-world[12;28H[K[12;12H[?12l[?25h[?25l[34map[m[94m[100m[1C[31m:[m[94m[100m hello-world[12;27H[K[12;11H[?12l[?25h[?25l[34map[m[94m[100m[1C[31m:[m[94m[100m hello-world[12;26H[K[12;10H[?12l[?25h[?25l[34map[m[94m[100m[1C[31m:[m[94m[100m hello-world[12;25H[K[12;9H[?12l[?25h[13;9H[14;9H[13;9H[?25l[34mspec[m[94m[100m[31m:[m[94m[100m[13;11H[K[13;6H[?12l[?25h[?25l[34mspec[m[94m[100m[31m:[m[94m[100m[13;10H[K[13;5H[?12l[?25h
+        [?25l[34mcontainers[m[94m[100m[31m:[m[94m[100m[14;19H[K[14;8H[?12l[?25h[?25l[34mcontainers[m[94m[100m[31m:[m[94m[100m[14;18H[K[14;7H[?12l[?25h[15;7H  [?25l[32m- [m[94m[100m[34mname[m[94m[100m[31m:[m[94m[100m hello-pod[15;25H[K[15;8H[?12l[?25h[?25l[32m- [m[94m[100m[34mname[m[94m[100m[31m:[m[94m[100m hello-pod[15;24H[K[15;7H[?12l[?25h[16;7H  [1C[?25l[34mimage[m[94m[100m[31m:[m[94m[100m nigelpoulton/pluralsight-docker-ci:latest[16;56H[K[16;8H[?12l[?25h[?25l [34mimage[m[94m[100m[31m:[m[94m[100m nigelpoulton/pluralsight-docker-ci:latest[16;9H[?12l[?25h[17;9H[18;9H[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C [1C[1C[1C[1C[?25l[19;1H[K[19;1H[?12l[?25h[27;1H[K[19;1H[?25l[?12l[?25h[?25l[27;1H:[?12l[?25hwq[?25l"rc.yml" 19L, 344C written
+[39;49m[?1l>[?12l[?25h[?1049lsh-3.2# vi rc.yml [C[C[C[C[C[C[C[C[15@kubectl create -f[C[C[C[C[C[C[C[C
+replicationcontroller "hello-rc" created
+sh-3.2# NOTE:  Spacing matters for YAML files - Space in 2 LIN[K[K[K[Kx c[K(Characters) for each new level.
+sh: syntax error near unexpected token `('
+sh-3.2# NOTE:  Spacing matters for YAML files - Space in 2x (Characters) for each new level.[C[C[C[C[C[C[C[Ckubectl create -f rc.yml [K[C[C[1P [1P [1P [1P [1P [1P [K[1P [1P [K[1P [1P [1P [1P [1P [1P [K[1P [1P [1P [1P [1P b e c t l [C d e s c r i b e [C r e p l i c a t i o n - c o n t r o l l e r s [C h e l l o w [1P - r c 
+the server doesn't have a resource type "replication-controllers"
+sh-3.2# kubectl describe replication-controllers hello-rc [K[Krc
+Name:		hello-rc
+Namespace:	default
+Selector:	app=hello-world
+Labels:		app=hello-world
+Annotations:	<none>
+Replicas:	10 current / 10 desired
+Pods Status:	10 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:	app=hello-world
+  Containers:
+   hello-pod:
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Port:		8080/TCP
+    Environment:	<none>
+    Mounts:		<none>
+  Volumes:		<none>
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----			-------------	--------	------			-------
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-h8t8g
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-00mtq
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-kbf08
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-xs968
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-vlrc3
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-jxwsr
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-709wb
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-fh0ps
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-1gl91
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	(combined from similar events): Created pod: hello-rc-20rm3
+sh-3.2# kubectl describe rc[K[K[K[K[K[K[K[K[K[K[Kget rc
+NAME       DESIRED   CURRENT   READY     AGE
+hello-rc   10        10        10        3m
+sh-3.2# kubectl get rc[1Prc[1Prc[1Prc[1Prcdrcercsrccrc[Crcircbrcerc rc[C[C/hello-rc
+Name:		hello-rc
+Namespace:	default
+Selector:	app=hello-world
+Labels:		app=hello-world
+Annotations:	<none>
+Replicas:	10 current / 10 desired
+Pods Status:	10 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:	app=hello-world
+  Containers:
+   hello-pod:
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Port:		8080/TCP
+    Environment:	<none>
+    Mounts:		<none>
+  Volumes:		<none>
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----			-------------	--------	------			-------
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-h8t8g
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-00mtq
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-kbf08
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-xs968
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-vlrc3
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-jxwsr
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-709wb
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-fh0ps
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-1gl91
+  3m		3m		1	replication-controller			Normal		SuccessfulCreate	(combined from similar events): Created pod: hello-rc-20rm3
+sh-3.2# UPDAT [KE THE CONFIG -----
+sh: UPDATE: command not found
+sh-3.2# vi rc.yml 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;27r[?12;25h[?12l[?25h[27m[m[94m[100m[H[2J[?25l[27;1H"rc.yml" 19L, 344C[>c[1;1H[34mapiVersion[m[94m[100m[31m:[m[94m[100m v1
+[34mkind[m[94m[100m[31m:[m[94m[100m ReplicationController
+[34mmetadata[m[94m[100m[31m:[m[94m[100m
+  [34mname[m[94m[100m[31m:[m[94m[100m hello-rc
+[34mspec[m[94m[100m[31m:[m[94m[100m
+  [34mreplicas[m[94m[100m[31m:[m[94m[100m [36m10[m[94m[100m
+  [34mselector[m[94m[100m[31m:[m[94m[100m
+    [34mapp[m[94m[100m[31m:[m[94m[100m hello-world
+  [34mtemplate[m[94m[100m[31m:[m[94m[100m
+    [34mmetadata[m[94m[100m[31m:[m[94m[100m[11;7H[34mlabels[m[94m[100m[31m:[m[94m[100m[12;9H[34mapp[m[94m[100m[31m:[m[94m[100m hello-world
+    [34mspec[m[94m[100m[31m:[m[94m[100m[14;7H[34mcontainers[m[94m[100m[31m:[m[94m[100m[15;7H[32m- [m[94m[100m[34mname[m[94m[100m[31m:[m[94m[100m hello-pod[16;9H[34mimage[m[94m[100m[31m:[m[94m[100m nigelpoulton/pluralsight-docker-ci:latest[17;9H[34mports[m[94m[100m[31m:[m[94m[100m[18;9H[32m- [m[94m[100m[34mcontainerPort[m[94m[100m[31m:[m[94m[100m [36m8080[m[94m[100m
+
+[1m[92m~                                                                                                                                                                                        [21;1H~                                                                                                                                                                                        [22;1H~                                                                                                                                                                                        [23;1H~                                                                                                                                                                                        [24;1H~                                                                                                                                                                                        [25;1H~                                                                                                                                                                                        [26;1H~                                                                                                                                                                                        [1;1H[?12l[?25h
+
+
+
+
+[m[94m[100m  [1C[1C[1C[1C[1C[1C[1C[1C[1C [1C[?25l[27;1H[34m-- INSERT --[m[94m[100m[27;13H[K[6;14H[?12l[?25h[?25l[36m0[m[94m[100m[6;14H[K[6;13H[?12l[?25h[?25l[36m20[?12l[?25h[m[94m[100m[27;1H[K[6;13H[?25l[?12l[?25h[?25l[27;1H:[?12l[?25hwq[?25l"rc.yml" 19L, 344C written
+[39;49m[?1l>[?12l[?25h[?1049lsh-3.2# kubectl apply -f rc.yml
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+replicationcontroller "hello-rc" configured
+sh-3.2# kubectl apply -f rc.yml[C[C[C[C[C[C[C[C[13Pvi rc.yml [C[C[C[C[C[C[C[CUPDATE THE CONFIG -----[C[C[C[C[C[C[C[Ckubectl describe rc/hello-rc
+Name:		hello-rc
+Namespace:	default
+Selector:	app=hello-world
+Labels:		app=hello-world
+Annotations:	kubectl.kubernetes.io/last-applied-configuration={"apiVersion":"v1","kind":"ReplicationController","metadata":{"annotations":{},"name":"hello-rc","namespace":"default"},"spec":{"replicas":20,"selector...
+Replicas:	20 current / 20 desired
+Pods Status:	13 Running / 7 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:	app=hello-world
+  Containers:
+   hello-pod:
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Port:		8080/TCP
+    Environment:	<none>
+    Mounts:		<none>
+  Volumes:		<none>
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----			-------------	--------	------			-------
+  4m		4m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-h8t8g
+  4m		4m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-00mtq
+  4m		4m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-kbf08
+  4m		4m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-xs968
+  4m		4m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-vlrc3
+  4m		4m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-jxwsr
+  4m		4m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-709wb
+  4m		4m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-fh0ps
+  4m		4m		1	replication-controller			Normal		SuccessfulCreate	Created pod: hello-rc-1gl91
+  4m		8s		11	replication-controller			Normal		SuccessfulCreate	(combined from similar events): Created pod: hello-rc-zrzc5
+sh-3.2# kubectl describe rc/hello-rc[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[5Papply -f rc.yml[C[C[C[C[C[C[C[C[13Pvi rc.yml [C[C[C[C[C[C[C[CUPDATE THE CONFIG -----[C[C[C[C[C[C[C[Ckubectl describe rc/hello-rc[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cget rc[K
+NAME       DESIRED   CURRENT   READY     AGE
+hello-rc   20        20        20        5m
+sh-3.2# -----------------------
+sh: -----------------------: command not found
+sh-3.2# -----------------------
+sh: -----------------------: command not found
+sh-3.2# -----------------------
+sh: -----------------------: command not found
+sh-3.2# NEW SECTION - SERVICES
+sh: NEW: command not found
+sh-3.2# kubectl get nodes
+NAME       STATUS    AGE       VERSION
+minikube   Ready     19h       v1.7.5
+sh-3.2# kubectl get nodes[K
+NAME       STATUS    AGE       VERSION
+minikube   Ready     19h       v1.7.5
+sh-3.2# kubectl get node[1P node[1P node[1P noded nodee nodes nodec noder nodei nodeb nodee node
+Name:			minikube
+Role:			
+Labels:			beta.kubernetes.io/arch=amd64
+			beta.kubernetes.io/os=linux
+			kubernetes.io/hostname=minikube
+Annotations:		alpha.kubernetes.io/provided-node-ip=192.168.64.3
+			node.alpha.kubernetes.io/ttl=0
+			volumes.kubernetes.io/controller-managed-attach-detach=true
+Taints:			<none>
+CreationTimestamp:	Mon, 11 Sep 2017 15:14:13 -0400
+Conditions:
+  Type			Status	LastHeartbeatTime			LastTransitionTime			Reason				Message
+  ----			------	-----------------			------------------			------				-------
+  OutOfDisk 		False 	Tue, 12 Sep 2017 11:08:40 -0400 	Mon, 11 Sep 2017 15:14:13 -0400 	KubeletHasSufficientDisk 	kubelet has sufficient disk space available
+  MemoryPressure 	False 	Tue, 12 Sep 2017 11:08:40 -0400 	Mon, 11 Sep 2017 15:14:13 -0400 	KubeletHasSufficientMemory 	kubelet has sufficient memory available
+  DiskPressure 		False 	Tue, 12 Sep 2017 11:08:40 -0400 	Mon, 11 Sep 2017 15:14:13 -0400 	KubeletHasNoDiskPressure 	kubelet has no disk pressure
+  Ready 		True 	Tue, 12 Sep 2017 11:08:40 -0400 	Mon, 11 Sep 2017 15:14:24 -0400 	KubeletReady 			kubelet is posting ready status
+Addresses:
+  InternalIP:	192.168.64.3
+  Hostname:	minikube
+Capacity:
+ cpu:		2
+ memory:	2048148Ki
+ pods:		110
+Allocatable:
+ cpu:		2
+ memory:	1945748Ki
+ pods:		110
+System Info:
+ Machine ID:			b84ddb9d9157491c9c1bcc5a1a37b08e
+ System UUID:			882741A6-0000-0000-BB88-2847BA1880E6
+ Boot ID:			9eef9b9e-b4d9-4dbb-8270-ef80b7af470f
+ Kernel Version:		4.9.13
+ OS Image:			Buildroot 2017.02
+ Operating System:		linux
+ Architecture:			amd64
+ Container Runtime Version:	docker://1.12.6
+ Kubelet Version:		v1.7.5
+ Kube-Proxy Version:		v1.7.5
+ExternalID:			minikube
+Non-terminated Pods:		(23 in total)
+  Namespace			Name					CPU Requests	CPU Limits	Memory Requests	Memory Limits
+  ---------			----					------------	----------	---------------	-------------
+  default			hello-rc-00mtq				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-0385w				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-054gn				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-1gl91				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-1v3cr				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-20rm3				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-709wb				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-910qv				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-fh0ps				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-gg3sx				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-h0ghv				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-h8t8g				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-jxwsr				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-kbf08				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-q16mk				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-s4bkf				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-vlrc3				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-xs968				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-zlh77				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  default			hello-rc-zrzc5				0 (0%)		0 (0%)		0 (0%)		0 (0%)
+  kube-system			kube-addon-manager-minikube		5m (0%)		0 (0%)		50Mi (2%)	0 (0%)
+  kube-system			kube-dns-910330662-jtzhx		260m (13%)	0 (0%)		110Mi (5%)	170Mi (8%)
+  kube-system			kubernetes-dashboard-580rd		0 (0%)		0 (0%)		0 (0%)		0 (0%)
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  CPU Requests	CPU Limits	Memory Requests	Memory Limits
+  ------------	----------	---------------	-------------
+  265m (13%)	0 (0%)		160Mi (8%)	170Mi (8%)
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----			-------------	--------	------			-------
+  30m		30m		1	kubelet, minikube			Normal		Starting		Starting kubelet.
+  30m		30m		1	kubelet, minikube			Normal		NodeAllocatableEnforced	Updated Node Allocatable limit across pods
+  30m		30m		1	kubelet, minikube			Normal		NodeHasSufficientDisk	Node minikube status is now: NodeHasSufficientDisk
+  30m		30m		1	kubelet, minikube			Normal		NodeHasSufficientMemory	Node minikube status is now: NodeHasSufficientMemory
+  30m		30m		1	kubelet, minikube			Normal		NodeHasNoDiskPressure	Node minikube status is now: NodeHasNoDiskPressure
+  30m		30m		1	kubelet, minikube			Warning		Rebooted		Node minikube has been rebooted, boot id: 9eef9b9e-b4d9-4dbb-8270-ef80b7af470f
+  30m		30m		1	kube-proxy, minikube			Normal		Starting		Starting kube-proxy.
+sh-3.2# NOTE : Browser sys[K[K[Kor[Kur RC / PODs were NOT accessible via the node IP 192.168.64.3
+sh: NOTE: command not found
+sh-3.2# kubectl expose rc hello-rc --name-[K=hello-svc --target-port=8080 --type=NodePort
+service "hello-svc" exposed
+sh-3.2# kubectl expose rc hello-rc --name=hello-svc --target-port=8080 --type=NodePort[C[K[K[K[K[K[Kdescribe svc hello-svc
+Name:			hello-svc
+Namespace:		default
+Labels:			app=hello-world
+Annotations:		<none>
+Selector:		app=hello-world
+Type:			NodePort
+IP:			10.0.0.13
+Port:			<unset>	8080/TCP
+NodePort:		<unset>	32685/TCP
+Endpoints:		172.17.0.10:8080,172.17.0.11:8080,172.17.0.12:8080 + 17 more...
+Session Affinity:	None
+Events:			<none>
+sh-3.2# NOTE:  Using S[KNodePort a[Kwith the IP Address of Master (Its a[Konly Single Node cluster (Worker and Master [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[KNode and Master are cmo[K[Kombined) 192.168.64.3:32685
+sh: syntax error near unexpected token `('
+sh-3.2# NOTE _[K[K: IT works from Chrome
+sh: NOTE:: command not found
+sh-3.2# NOTE:  Service Ports will always be betwe[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kby default be between 32,000 and 32,767.[K
+sh: NOTE:: command not found
+sh-3.2# This was iteratively[K[K WAY - Not Kubernetes way. 
+sh: This: command not found
+sh-3.2# -------------------------
+sh: -------------------------: command not found
+sh-3.2# --------------------------
+sh: --------------------------: command not found
+sh-3.2# Servic[K[K[K[K[K[KNOTE: Create Service Declaratively
+sh: NOTE:: command not found
+sh-3.2# kubectl delete svc hello-svc
+service "hello-svc" deleted
+sh-3.2# ls
+rc.yml
+sh-3.2# pwd
+/Users/kraust/gitHub/kubernetes-work/Replication-Controller
+sh-3.2# cd ../
+sh-3.2# ls
+.git			Pods			README.md		Replication-Controller
+sh-3.2# mkdir -p Services
+sh-3.2# cd Services/
+sh-3.2# cp Rep[K[K[K[K[K[Kcd ..
+sh-3.2# cp README.md [K[K[K[K[K[K[K[K[Keplication-Controller//[Krc.yml ../Ser[K[K[K[K[K[KServices/service[Ke.yml
+sh-3.2# vi Services/service.yml 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;27r[?12;25h[?12l[?25h[27m[m[94m[100m[H[2J[?25l[27;1H"Services/service.yml" 19L, 344C[>c[1;1H[34mapiVersion[m[94m[100m[31m:[m[94m[100m v1
+[34mkind[m[94m[100m[31m:[m[94m[100m ReplicationController
+[34mmetadata[m[94m[100m[31m:[m[94m[100m
+  [34mname[m[94m[100m[31m:[m[94m[100m hello-rc
+[34mspec[m[94m[100m[31m:[m[94m[100m
+  [34mreplicas[m[94m[100m[31m:[m[94m[100m [36m20[m[94m[100m
+  [34mselector[m[94m[100m[31m:[m[94m[100m
+    [34mapp[m[94m[100m[31m:[m[94m[100m hello-world
+  [34mtemplate[m[94m[100m[31m:[m[94m[100m
+    [34mmetadata[m[94m[100m[31m:[m[94m[100m[11;7H[34mlabels[m[94m[100m[31m:[m[94m[100m[12;9H[34mapp[m[94m[100m[31m:[m[94m[100m hello-world
+    [34mspec[m[94m[100m[31m:[m[94m[100m[14;7H[34mcontainers[m[94m[100m[31m:[m[94m[100m[15;7H[32m- [m[94m[100m[34mname[m[94m[100m[31m:[m[94m[100m hello-pod[16;9H[34mimage[m[94m[100m[31m:[m[94m[100m nigelpoulton/pluralsight-docker-ci:latest[17;9H[34mports[m[94m[100m[31m:[m[94m[100m[18;9H[32m- [m[94m[100m[34mcontainerPort[m[94m[100m[31m:[m[94m[100m [36m8080[m[94m[100m
+
+[1m[92m~                                                                                                                                                                                        [21;1H~                                                                                                                                                                                        [22;1H~                                                                                                                                                                                        [23;1H~                                                                                                                                                                                        [24;1H~                                                                                                                                                                                        [25;1H~                                                                                                                                                                                        [26;1H~                                                                                                                                                                                        [1;1H[?12l[?25h
+[1C[1C[1C[1C[1C[m[94m[100m Replicatio[?25l[27;1H[K[27;1H:s[7m[31mE33: No previous substitute regular expression[2;17H[?12l[?25h[m[94m[100monControlle[?25l[27;1H[34m-- INSERT --[m[94m[100m[27;13H[K[2;27H[?12l[?25hr[?25l[2;27H[K[2;27H[?12l[?25h[?25l[2;26H[K[2;26H[?12l[?25h[?25l[2;25H[K[2;25H[?12l[?25h[?25l[2;24H[K[2;24H[?12l[?25h[?25l[2;23H[K[2;23H[?12l[?25h[?25l[2;22H[K[2;22H[?12l[?25h[?25l[2;21H[K[2;21H[?12l[?25h[?25l[2;20H[K[2;20H[?12l[?25h[?25l[2;19H[K[2;19H[?12l[?25h[?25l[2;18H[K[2;18H[?12l[?25h[?25l[2;17H[K[2;17H[?12l[?25h[?25l[2;16H[K[2;16H[?12l[?25h[?25l[2;15H[K[2;15H[?12l[?25h[?25l[2;14H[K[2;14H[?12l[?25h[?25l[2;13H[K[2;13H[?12l[?25h[?25l[2;12H[K[2;12H[?12l[?25h[?25l[2;11H[K[2;11H[?12l[?25h[?25l[2;10H[K[2;10H[?12l[?25h[?25l[2;9H[K[2;9H[?12l[?25h[?25l[2;8H[K[2;8H[?12l[?25h[?25l[2;7H[K[2;7H[?12l[?25h[?25l[?12l[?25h[?25l [?12l[?25h[?25lS[?12l[?25h[?25le[?12l[?25h[?25lr[?12l[?25h[?25lv[?12l[?25h[?25li[?12l[?25h[?25lc[?12l[?25h[?25le[?12l[?25h[3;10H[4;14H-rc[?25l[4;16H[K[4;16H[?12l[?25h[?25l[4;15H[K[4;15H[?12l[?25h[?25ls[?12l[?25h[?25lv[?12l[?25h[?25lc[?12l[?25h[?25l[5;26r[5;1H[L[1;27r[5;1H[?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25ll[?12l[?25h[?25la[?12l[?25h[?25lb[?12l[?25h[?25le[?12l[?25h[?25ll[?12l[?25h[?25ls[?12l[?25h[?25l  [34mlabels[m[94m[100m[31m:[?12l[?25h[?25l[m[94m[100m [?12l[?25h[?25lh[?12l[?25h[?25le[?12l[?25h[?25ll[?12l[?25h[?25ll[?12l[?25h[?25lo[?12l[?25h[?25lw[?12l[?25h[?25l[5;16H[K[5;16H[?12l[?25h[?25l-[?12l[?25h[?25lw[?12l[?25h[?25lo[?12l[?25h[?25lr[?12l[?25h[?25ll[?12l[?25h[?25ld[?12l[?25h[6;6H[7;15H[8;12H[9;21H[10;12H[11;14H[12;14H[13;22H[14;10H[13;22H[12;14H[11;14H[10;12H[9;21H[8;12H[7;15H[6;6H[5;22H[?25l[6;26r[6;1H[L[1;27r[5;11H[K[6;1Hhello-world[?12l[?25h[?25l hello-world [?12l[?25h[?25l hello-world  [?12l[?25h[?25l hello-world   [?12l[?25h[?25l hello-world    [?12l[?25h[?25lahello-world    a[?12l[?25h[?25lphello-world[6;7H[?12l[?25h[?25lphello-world[6;8H[?12l[?25h[?25l:hello-world[6;9H[?12l[?25h[?25l[34mapp[m[94m[100m[31m:[m[94m[100m hello-world[6;10H[?12l[?25h[7;6H[8;10H[27;1H[K[8;7H[?25l[?12l[?25h[?25l[8;26r[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [8;3H[?12l[?25h[?25l[8;26r[m[94m[100m[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [8;5H[?12l[?25h[?25l[8;26r[m[94m[100m[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [8;3H[?12l[?25h[?25l[8;26r[m[94m[100m[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [8;5H[?12l[?25h[?25l[8;26r[m[94m[100m[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [8;7H[?12l[?25h[?25l[8;26r[m[94m[100m[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [8;9H[?12l[?25h[?25l[8;26r[m[94m[100m[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [8;5H[?12l[?25h[?25l[8;26r[m[94m[100m[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [8;7H[?12l[?25h[?25l[8;26r[m[94m[100m[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [8;7H[?12l[?25h[?25l[8;26r[m[94m[100m[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [8;9H[?12l[?25h[?25l[8;26r[m[94m[100m[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [8;9H[?12l[?25h[?25l[m[94m[100m[34mports[m[94m[100m[31m:[m[94m[100m[8;14H[K[8;8H[?12l[?25h   [?25l[27;1H[34m-- INSERT --[8;8H[?12l[?25h[?25lports[m[94m[100m[31m:[m[94m[100m[8;13H[K[8;7H[?12l[?25h[?25l[34mports[m[94m[100m[31m:[m[94m[100m[8;12H[K[8;6H[?12l[?25h[?25l[34mports[m[94m[100m[31m:[m[94m[100m[8;11H[K[8;5H[?12l[?25h[?25l[34mports[m[94m[100m[31m:[m[94m[100m[8;10H[K[8;4H[?12l[?25h[?25l[34mports[m[94m[100m[31m:[m[94m[100m[8;9H[K[8;3H[?12l[?25h[?25l[34mports[m[94m[100m[31m:[m[94m[100m[8;8H[K[8;2H[?12l[?25h
+        [1C[1C[27;1H[K[9;10H[?25l[?12l[?25h[?25l[9;26r[26;1H
+[1;27r[26;1H[1m[92m~                                                                                                                                                                                        [9;1H[?12l[?25h[8;1H[m[94m[100m 
+[8;1H[?25l[27;1H[34m-- INSERT --[8;1H[?12l[?25h[?25l[9;26r[m[94m[100m[9;1H[L[1;27r[8;2H[K[9;2H[34mports[m[94m[100m[31m:[?12l[?25h[8;1H[7;1H
+[?25l[m[94m[100m [?12l[?25h[?25l [?12l[?25h[?25lN[?12l[?25h[?25l[8;3H[K[8;3H[?12l[?25h[?25lt[?12l[?25h[?25ly[?12l[?25h[?25lp[?12l[?25h[?25le[?12l[?25h[?25l  [34mtype[m[94m[100m[31m:[?12l[?25h[?25l[m[94m[100m [?12l[?25h[?25lN[?12l[?25h[?25lo[?12l[?25h[?25ld[?12l[?25h[?25le[?12l[?25h[?25lP[?12l[?25h[?25lo[?12l[?25h[?25lr[?12l[?25h[?25lt[?12l[?25h[9;8H[?25l [34mports[m[94m[100m[31m:[m[94m[100m  [?12l[?25h[1C[1C[1C[1C[1C[1C[?25l[10;26r[10;1H[L[1;27r[10;1H[?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l-[?12l[?25h[?25l[10;4H[K[10;4H[?12l[?25h[?25l[?12l[?25h[?25l-[?12l[?25h[?25l[32m- [?12l[?25h[?25l[m[94m[100mp[?12l[?25h[?25lo[?12l[?25h[?25lr[?12l[?25h[?25lt[?12l[?25h[?25l[34mport[m[94m[100m[31m:[?12l[?25h[?25l[m[94m[100m [?12l[?25h[?25l[36m8[?12l[?25h[?25l0[?12l[?25h[?25l8[?12l[?25h[?25l0[?12l[?25h[?25l[11;26r[m[94m[100m[11;1H[L[1;27r[11;1H[?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25lp[?12l[?25h[?25lr[?12l[?25h[?25lo[?12l[?25h[?25lt[?12l[?25h[?25lo[?12l[?25h[?25lc[?12l[?25h[?25lo[?12l[?25h[?25ll[?12l[?25h[?25ll[?12l[?25h[?25l[11;13H[K[11;13H[?12l[?25h[?25l    [34mprotocol[m[94m[100m[31m:[?12l[?25h[?25l[m[94m[100m [?12l[?25h[?25lT[?12l[?25h[?25lC[?12l[?25h[?25lP[?12l[?25h[?25l[12;26r[12;1H[L[1;27r[12;1H[?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25ls[?12l[?25h[?25le[?12l[?25h[?25ll[?12l[?25h[?25le[?12l[?25h[?25lc[?12l[?25h[?25lt[?12l[?25h[?25lo[?12l[?25h[?25lr[?12l[?25h[?25l  [34mselector[m[94m[100m[31m:[?12l[?25h[?25l[13;26r[m[94m[100m[13;1H[L[1;27r[13;1H[?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25la[?12l[?25h[?25lp[?12l[?25h[?25lp[?12l[?25h[?25l[34mapp[m[94m[100m[31m:[?12l[?25h[?25l[m[94m[100m [?12l[?25h[?25lH[?12l[?25h[?25l[13;10H[K[13;10H[?12l[?25h[?25lh[?12l[?25h[?25le[?12l[?25h[?25ll[?12l[?25h[?25ll[?12l[?25h[?25lo[?12l[?25h[?25l-[?12l[?25h[?25lw[?12l[?25h[?25lo[?12l[?25h[?25lr[?12l[?25h[?25ll[?12l[?25h[?25ld[?12l[?25h
+[?25l[15;1H[K[15;1H[?12l[?25h[?25l[16;1H[K[16;1H[?12l[?25h[?25l[17;1H[K[17;1H[?12l[?25h[?25l[18;1H[K[18;1H[?12l[?25h[27;1H[K[18;1H[?25l[?12l[?25h[?25l[27;1H:[?12l[?25hw[?25l"Services/service.yml" 18L, 192C written[18;1H[?12l[?25h[?25l[27;1H[K[27;1H:[?12l[?25hwq[?25l"Services/service.yml" 18L, 192C written
+[39;49m[?1l>[?12l[?25h[?1049lsh-3.2# NOTE:   spect: [K[K[K:   type:  4[K3 different types
+sh: NOTE:: command not found
+sh-3.2# 1) ClusterIP - D[K(Default) Gets a stable IP within the CLUSTER ONLY.
+sh: syntax error near unexpected token `)'
+sh-3.2# 2) NodePort - Exposes app externally add[K[K[Kby adding a Service Port for the Service. Assigned random port above 30000 then Service Port for access
+sh: syntax error near unexpected token `)'
+sh-3.2# 3) LocalBalancer =- [K[K[K- Intergrates NodePort with CloudBased LB[Koad Balancers
+sh: syntax error near unexpected token `)'
+sh-3.2# pw
+sh: pw: command not found
+sh-3.2# pwd
+/Users/kraust/gitHub/kubernetes-work
+sh-3.2# ls
+.git			Pods			README.md		Replication-Controller	Services
+sh-3.2# vi Services/service.yml 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;27r[?12;25h[?12l[?25h[27m[m[94m[100m[H[2J[?25l[27;1H"Services/service.yml" 18L, 192C[>c[1;1H[34mapiVersion[m[94m[100m[31m:[m[94m[100m v1
+[34mkind[m[94m[100m[31m:[m[94m[100m Service
+[34mmetadata[m[94m[100m[31m:[m[94m[100m
+  [34mname[m[94m[100m[31m:[m[94m[100m hello-svc
+  [34mlabels[m[94m[100m[31m:[m[94m[100m
+    [34mapp[m[94m[100m[31m:[m[94m[100m hello-world
+[34mspec[m[94m[100m[31m:[m[94m[100m
+  [34mtype[m[94m[100m[31m:[m[94m[100m NodePort
+  [34mports[m[94m[100m[31m:[m[94m[100m
+  [32m- [m[94m[100m[34mport[m[94m[100m[31m:[m[94m[100m [36m8080[m[94m[100m
+    [34mprotocol[m[94m[100m[31m:[m[94m[100m TCP
+  [34mselector[m[94m[100m[31m:[m[94m[100m
+    [34mapp[m[94m[100m[31m:[m[94m[100m hello-world[19;1H[1m[92m~                                                                                                                                                                                        [20;1H~                                                                                                                                                                                        [21;1H~                                                                                                                                                                                        [22;1H~                                                                                                                                                                                        [23;1H~                                                                                                                                                                                        [24;1H~                                                                                                                                                                                        [25;1H~                                                                                                                                                                                        [26;1H~                                                                                                                                                                                        [1;1H[?12l[?25h[?25l[m[94m[100m[27;1H[K[27;1H:[?12l[?25hq![?25l[27;1H[K[27;1H[?1l>[?12l[?25h[?1049lsh-3.2# vi Services/service.yml [C[C[C[C[C[C[C[C[C[C[1P[1P[1@c[1@p[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C S e r v i ces/ s e r v i c e - 2 . y m l 
+sh-3.2# vicp Services/service.yml Services/service-2.yml [C[C[C[C[C[C[C[C[23Pvi Services/service[C[C[C[C[C[1@-[1@2[C[C[C[C.yml 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;27r[?12;25h[?12l[?25h[27m[m[94m[100m[H[2J[?25l[27;1H"Services/service-2.yml.yml" [New File][>c[2;1H[1m[92m~                                                                                                                                                                                        [3;1H~                                                                                                                                                                                        [4;1H~                                                                                                                                                                                        [5;1H~                                                                                                                                                                                        [6;1H~                                                                                                                                                                                        [7;1H~                                                                                                                                                                                        [8;1H~                                                                                                                                                                                        [9;1H~                                                                                                                                                                                        [10;1H~                                                                                                                                                                                        [11;1H~                                                                                                                                                                                        [12;1H~                                                                                                                                                                                        [13;1H~                                                                                                                                                                                        [14;1H~                                                                                                                                                                                        [15;1H~                                                                                                                                                                                        [16;1H~                                                                                                                                                                                        [17;1H~                                                                                                                                                                                        [18;1H~                                                                                                                                                                                        [19;1H~                                                                                                                                                                                        [20;1H~                                                                                                                                                                                        [21;1H~                                                                                                                                                                                        [22;1H~                                                                                                                                                                                        [23;1H~                                                                                                                                                                                        [24;1H~                                                                                                                                                                                        [25;1H~                                                                                                                                                                                        [26;1H~                                                                                                                                                                                        [1;1H[?12l[?25h[?25l[m[94m[100m[27;1H[K[27;1H:[?12l[?25hq![?25l[27;1H[K[27;1H[?1l>[?12l[?25h[?1049lsh-3.2# vi Services/service-2.yml.yml [K[K[K[K[K
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;27r[?12;25h[?12l[?25h[27m[m[94m[100m[H[2J[?25l[27;1H"Services/service-2.yml" 18L, 192C[>c[1;1H[34mapiVersion[m[94m[100m[31m:[m[94m[100m v1
+[34mkind[m[94m[100m[31m:[m[94m[100m Service
+[34mmetadata[m[94m[100m[31m:[m[94m[100m
+  [34mname[m[94m[100m[31m:[m[94m[100m hello-svc
+  [34mlabels[m[94m[100m[31m:[m[94m[100m
+    [34mapp[m[94m[100m[31m:[m[94m[100m hello-world
+[34mspec[m[94m[100m[31m:[m[94m[100m
+  [34mtype[m[94m[100m[31m:[m[94m[100m NodePort
+  [34mports[m[94m[100m[31m:[m[94m[100m
+  [32m- [m[94m[100m[34mport[m[94m[100m[31m:[m[94m[100m [36m8080[m[94m[100m
+    [34mprotocol[m[94m[100m[31m:[m[94m[100m TCP
+  [34mselector[m[94m[100m[31m:[m[94m[100m
+    [34mapp[m[94m[100m[31m:[m[94m[100m hello-world[19;1H[1m[92m~                                                                                                                                                                                        [20;1H~                                                                                                                                                                                        [21;1H~                                                                                                                                                                                        [22;1H~                                                                                                                                                                                        [23;1H~                                                                                                                                                                                        [24;1H~                                                                                                                                                                                        [25;1H~                                                                                                                                                                                        [26;1H~                                                                                                                                                                                        [1;1H[?12l[?25h
+
+
+
+
+
+
+
+
+
+[?25l[m[94m[100m[27;1H[34m-- INSERT --[m[94m[100m[27;13H[K[11;1H[?12l[?25h[?25l[12;26r[12;1H[L[1;27r[11;5H[K[12;5H[34mprotocol[m[94m[100m[31m:[m[94m[100m TCP[?12l[?25h[11;1H[?25l [?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25l [?12l[?25h[?25ln[?12l[?25h[?25ld[?12l[?25h[?25le[?12l[?25h[?25l[11;7H[K[11;7H[?12l[?25h[?25l[11;6H[K[11;6H[?12l[?25h[?25lo[?12l[?25h[?25ld[?12l[?25h[?25le[?12l[?25h[?25lP[?12l[?25h[?25lo[?12l[?25h[?25lr[?12l[?25h[?25lt[?12l[?25h[?25l    [34mnodePort[m[94m[100m[31m:[?12l[?25h[?25l[m[94m[100m [?12l[?25h[?25l[36m4[?12l[?25h[?25l[m[94m[100m[11;15H[K[11;15H[?12l[?25h[?25l[36m3[?12l[?25h[?25l0[?12l[?25h[?25l0[?12l[?25h[?25l0[?12l[?25h[?25l1[?12l[?25h[m[94m[100m[27;1H[K[11;19H[?25l[?12l[?25h[?25l[27;1H:[?12l[?25hwq[?25l"Services/service-2.yml" 19L, 212C written
+[39;49m[?1l>[?12l[?25h[?1049lsh-3.2# NOTE: You can also specify the nodePort (or it can be assigned dynamically)/.[K[K.
+sh: syntax error near unexpected token `('
+sh-3.2# kubectl describe pods | frep [K[K[K[K[Kgrep app
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+Labels:		app=hello-world
+sh-3.2# this il[K[Kwill be used t[Kwhen deploying the Service for the see[Klector:  app:  hello-worlkd[Kd[K[Kd selector label to match to.
+sh: this: command not found
+sh-3.2# NOTE:  this will be used when deploying the Service for the selector:  app:  hello-world selector label to match to.
+sh: NOTE:: command not found
+sh-3.2# bu[K[Kkubectl create 0-f[K[K[K-f ser[K[K[KServices/service-2.yml 
+service "hello-svc" created
+sh-3.2# kubectl create -f Services/service-2.yml [K[Kget[K[K[Kget svc
+NAME         CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
+hello-svc    10.0.0.125   <nodes>       8080:30001/TCP   5s
+kubernetes   10.0.0.1     <none>        443/TCP          21h
+sh-3.2# kubectl get svc[1P svc[1P svc[1P svcd svce svcs svcc svcr svci svcb svce svc[C[C[C[C/hello-svc
+Name:			hello-svc
+Namespace:		default
+Labels:			app=hello-world
+Annotations:		<none>
+Selector:		app=hello-world
+Type:			NodePort
+IP:			10.0.0.125
+Port:			<unset>	8080/TCP
+NodePort:		<unset>	30001/TCP
+Endpoints:		172.17.0.10:8080,172.17.0.11:8080,172.17.0.12:8080 + 17 more...
+Session Affinity:	None
+Events:			<none>
+sh-3.2# kubectl describe pods
+Name:		hello-rc-00mtq
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:00:33 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.5
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://1261b69d38948543f258dddc14ce0b64c7afbe888b3eef5311e74afadcc74b7e
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:00:35 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-0385w
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:05:13 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.16
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://d2031b7637f1d3783cb93f86f9c0f2475b81837f736daf536813ca686474a146
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:05:16 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-054gn
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:05:13 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.14
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://13d256552b516f627d1eba86a38e9d0662bcbb820602db36a851fb0851cc9018
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:05:15 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-1gl91
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:00:33 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.4
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://a7317682c1fcf655c89b71d4e333030adb5103ee4794955ec74b271ddc7d8c2b
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:00:35 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-1v3cr
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:05:13 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.22
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://b208705348b2e014536fafe6f38f547e67542d7ea1b5da0dfed3550bc82a4a16
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:05:19 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-20rm3
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:00:33 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.13
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://b17575ea7aaf176691885b4f4ec87416d0b6b493948d690fd36c6b68b2ae1a1c
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:00:39 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-709wb
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:00:33 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.11
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://270d7421723a784a3ae5a081f15e8565f2470025a6358132fea32eae0581cb07
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:00:38 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-910qv
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:05:13 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.23
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://31fa9937ac3adf1c2825090f5699617907ca30ed507dda18183e3bd833f94550
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:05:19 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-fh0ps
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:00:33 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.10
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://1bb6c482591f7d21e3feec08dce5fe7a4b48ef77e9c00f0d8bdd9bcfb8f60739
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:00:38 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-gg3sx
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:05:13 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.17
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://ed7ed60be7a4f5662238b68c6173817aa934f619958a3d7983ddebb1bbbd3539
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:05:16 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-h0ghv
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:05:13 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.15
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://84ddb771c757cb2bb83d4262c2a760582916960a9653bc2ed4c1224b640b9a13
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:05:15 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-h8t8g
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:00:33 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.7
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://1bf770459698903c191cc6bff612f0687a628bef09028213f0079161cc68ef4d
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:00:36 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-jxwsr
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:00:33 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.8
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://c59796f0d5c22948fe45c133c168f966f29cfbb2e819fb014c62f7c2327d0945
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:00:37 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-kbf08
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:00:33 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.6
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://248f1a45c8dc003e86c575a3233ad733a221176a6a425e4547ba2bd8546b765e
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:00:36 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-q16mk
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:05:13 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.19
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://7405fa23e51a61046a4e996b3c852d4509ed7e4dbbac785134f49db7b564587c
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:05:17 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-s4bkf
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:05:13 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.20
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://447f301fbe243f26d0a3775932b00e55d3fc6cf63d4c4f9f7017e50e32d8282f
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:05:18 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-vlrc3
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:00:33 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.9
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://0801707d79fc0507cedb4b43c94c0462eb0ff1ed71535b232e4ef97e5fe35b71
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:00:38 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-xs968
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:00:33 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.12
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://d947eff65cf7250a2b7159835839b541e57dad65ad07d114de527ae8f7b6124a
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:00:39 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-zlh77
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:05:13 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.18
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://9ab1140337591c28dfee96d3955177341c0c934869145706e6bb95fc20ad374b
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:05:16 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+
+
+Name:		hello-rc-zrzc5
+Namespace:	default
+Node:		minikube/192.168.64.3
+Start Time:	Tue, 12 Sep 2017 11:05:13 -0400
+Labels:		app=hello-world
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicationController","namespace":"default","name":"hello-rc","uid":"202034a9-97cb-11e7-9456-3a18bf0e81eb...
+Status:		Running
+IP:		172.17.0.21
+Created By:	ReplicationController/hello-rc
+Controlled By:	ReplicationController/hello-rc
+Containers:
+  hello-pod:
+    Container ID:	docker://b3c9a86fca20b436f7524160adc92671593b5948c20a884fed81b244cbd50d08
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Image ID:		docker-pullable://nigelpoulton/pluralsight-docker-ci@sha256:7a6b0125fe7893e70dc63b2c42ad779e5866c6d2779ceb9b12a28e2c38bd8d3d
+    Port:		8080/TCP
+    State:		Running
+      Started:		Tue, 12 Sep 2017 11:05:18 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:	<none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gdkd3 (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-gdkd3:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-gdkd3
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:		<none>
+sh-3.2# kubectl describe pods[K[K[K[Ksvc
+Name:			hello-svc
+Namespace:		default
+Labels:			app=hello-world
+Annotations:		<none>
+Selector:		app=hello-world
+Type:			NodePort
+IP:			10.0.0.125
+Port:			<unset>	8080/TCP
+NodePort:		<unset>	30001/TCP
+Endpoints:		172.17.0.10:8080,172.17.0.11:8080,172.17.0.12:8080 + 17 more...
+Session Affinity:	None
+Events:			<none>
+
+
+Name:			kubernetes
+Namespace:		default
+Labels:			component=apiserver
+			provider=kubernetes
+Annotations:		<none>
+Selector:		<none>
+Type:			ClusterIP
+IP:			10.0.0.1
+Port:			https	443/TCP
+Endpoints:		192.168.64.3:8443
+Session Affinity:	ClientIP
+Events:			<none>
+sh-3.2# kubectl describe svc --all-namespaces
+Name:			hello-svc
+Namespace:		default
+Labels:			app=hello-world
+Annotations:		<none>
+Selector:		app=hello-world
+Type:			NodePort
+IP:			10.0.0.125
+Port:			<unset>	8080/TCP
+NodePort:		<unset>	30001/TCP
+Endpoints:		172.17.0.10:8080,172.17.0.11:8080,172.17.0.12:8080 + 17 more...
+Session Affinity:	None
+Events:			<none>
+
+
+Name:			kubernetes
+Namespace:		default
+Labels:			component=apiserver
+			provider=kubernetes
+Annotations:		<none>
+Selector:		<none>
+Type:			ClusterIP
+IP:			10.0.0.1
+Port:			https	443/TCP
+Endpoints:		192.168.64.3:8443
+Session Affinity:	ClientIP
+Events:			<none>
+
+
+Name:			kube-dns
+Namespace:		kube-system
+Labels:			addonmanager.kubernetes.io/mode=Reconcile
+			k8s-app=kube-dns
+			kubernetes.io/name=KubeDNS
+Annotations:		kubectl.kubernetes.io/last-applied-configuration={"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"addonmanager.kubernetes.io/mode":"Reconcile","k8s-app":"kube-dns","kubernet...
+Selector:		k8s-app=kube-dns
+Type:			ClusterIP
+IP:			10.0.0.10
+Port:			dns	53/UDP
+Endpoints:		172.17.0.2:53
+Port:			dns-tcp	53/TCP
+Endpoints:		172.17.0.2:53
+Session Affinity:	None
+Events:			<none>
+
+
+Name:			kubernetes-dashboard
+Namespace:		kube-system
+Labels:			addonmanager.kubernetes.io/mode=Reconcile
+			app=kubernetes-dashboard
+			kubernetes.io/minikube-addons=dashboard
+			kubernetes.io/minikube-addons-endpoint=dashboard
+Annotations:		kubectl.kubernetes.io/last-applied-configuration={"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"addonmanager.kubernetes.io/mode":"Reconcile","app":"kubernetes-dashboard","...
+Selector:		app=kubernetes-dashboard
+Type:			NodePort
+IP:			10.0.0.16
+Port:			<unset>	80/TCP
+NodePort:		<unset>	30000/TCP
+Endpoints:		172.17.0.3:9090
+Session Affinity:	None
+Events:			<none>
+sh-3.2# NOTE:  TO DIN[K[K[KFIND OUT THE Dasb[Khboard IP Address
+sh: NOTE:: command not found
+sh-3.2# NOTE:  TO FIND OUT THE Dashboard IP Address[C[C[C[C[C[C[C[C[6Pkubectl describe svc --all-namespaces | grep dashboard
+Name:			kubernetes-dashboard
+			app=kubernetes-dashboard
+			kubernetes.io/minikube-addons=dashboard
+			kubernetes.io/minikube-addons-endpoint=dashboard
+Annotations:		kubectl.kubernetes.io/last-applied-configuration={"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"addonmanager.kubernetes.io/mode":"Reconcile","app":"kubernetes-dashboard","...
+Selector:		app=kubernetes-dashboard
+sh-3.2# kubectl describe svc --all-namespaces | grep dashboard[K[K[K[K[K[K[K[K[K[K[K[K[K[Kless
+[?1049h[?1h=Name:                   hello-svc
+Namespace:              default
+Labels:                 app=hello-world
+Annotations:            <none>
+Selector:               app=hello-world
+Type:                   NodePort
+IP:                     10.0.0.125
+Port:                   <unset> 8080/TCP
+NodePort:               <unset> 30001/TCP
+Endpoints:              172.17.0.10:8080,172.17.0.11:8080,172.17.0.12:8080 + 17 more...
+Session Affinity:       None
+Events:                 <none>
+
+
+Name:                   kubernetes
+Namespace:              default
+Labels:                 component=apiserver
+                        provider=kubernetes
+Annotations:            <none>
+Selector:               <none>
+Type:                   ClusterIP
+IP:                     10.0.0.1
+Port:                   https   443/TCP
+Endpoints:              192.168.64.3:8443
+Session Affinity:       ClientIP
+Events:                 <none>
+:[K[K
+
+Name:                   kube-dns
+Namespace:              kube-system
+Labels:                 addonmanager.kubernetes.io/mode=Reconcile
+                        k8s-app=kube-dns
+                        kubernetes.io/name=KubeDNS
+Annotations:            kubectl.kubernetes.io/last-applied-configuration={"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"addonmanager.kubernetes.io/mode":"Re concile","k8s-app":"kube-dns","kubernet...
+Selector:               k8s-app=kube-dns
+Type:                   ClusterIP
+IP:                     10.0.0.10
+Port:                   dns     53/UDP
+Endpoints:              172.17.0.2:53
+Port:                   dns-tcp 53/TCP
+Endpoints:              172.17.0.2:53
+Session Affinity:       None
+Events:                 <none>
+
+
+Name:                   kubernetes-dashboard
+Namespace:              kube-system
+Labels:                 addonmanager.kubernetes.io/mode=Reconcile
+                        app=kubernetes-dashboard
+                        kubernetes.io/minikube-addons=dashboard
+                        kubernetes.io/minikube-addons-endpoint=dashboard
+:[K[K[?1l>[?1049lsh-3.2# kubectl describe svc --all-namespaces | less[K[K[K[K[K[K
+Name:			hello-svc
+Namespace:		default
+Labels:			app=hello-world
+Annotations:		<none>
+Selector:		app=hello-world
+Type:			NodePort
+IP:			10.0.0.125
+Port:			<unset>	8080/TCP
+NodePort:		<unset>	30001/TCP
+Endpoints:		172.17.0.10:8080,172.17.0.11:8080,172.17.0.12:8080 + 17 more...
+Session Affinity:	None
+Events:			<none>
+
+
+Name:			kubernetes
+Namespace:		default
+Labels:			component=apiserver
+			provider=kubernetes
+Annotations:		<none>
+Selector:		<none>
+Type:			ClusterIP
+IP:			10.0.0.1
+Port:			https	443/TCP
+Endpoints:		192.168.64.3:8443
+Session Affinity:	ClientIP
+Events:			<none>
+
+
+Name:			kube-dns
+Namespace:		kube-system
+Labels:			addonmanager.kubernetes.io/mode=Reconcile
+			k8s-app=kube-dns
+			kubernetes.io/name=KubeDNS
+Annotations:		kubectl.kubernetes.io/last-applied-configuration={"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"addonmanager.kubernetes.io/mode":"Reconcile","k8s-app":"kube-dns","kubernet...
+Selector:		k8s-app=kube-dns
+Type:			ClusterIP
+IP:			10.0.0.10
+Port:			dns	53/UDP
+Endpoints:		172.17.0.2:53
+Port:			dns-tcp	53/TCP
+Endpoints:		172.17.0.2:53
+Session Affinity:	None
+Events:			<none>
+
+
+Name:			kubernetes-dashboard
+Namespace:		kube-system
+Labels:			addonmanager.kubernetes.io/mode=Reconcile
+			app=kubernetes-dashboard
+			kubernetes.io/minikube-addons=dashboard
+			kubernetes.io/minikube-addons-endpoint=dashboard
+Annotations:		kubectl.kubernetes.io/last-applied-configuration={"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"addonmanager.kubernetes.io/mode":"Reconcile","app":"kubernetes-dashboard","...
+Selector:		app=kubernetes-dashboard
+Type:			NodePort
+IP:			10.0.0.16
+Port:			<unset>	80/TCP
+NodePort:		<unset>	30000/TCP
+Endpoints:		172.17.0.3:9090
+Session Affinity:	None
+Events:			<none>
+sh-3.2# T[KNOTE: Then access via the NODE IP and the : Node [KPort  - 192.168.64.3.[K:30000
+sh: NOTE:: command not found
+sh-3.2# NOTE:  I hit 192;[K.168.64.3:30001   in browser and it worked great
+sh: NOTE:: command not found
+sh-3.2# Took some time
+sh: Took: command not found
+sh-3.2# kubectl get ep
+NAME         ENDPOINTS                                                         AGE
+hello-svc    172.17.0.10:8080,172.17.0.11:8080,172.17.0.12:8080 + 17 more...   24m
+kubernetes   192.168.64.3:8443                                                 21h
+sh-3.2# kubectl get ep[K[K[K[K[K[Kdescribe ep hello-svc
+Name:		hello-svc
+Namespace:	default
+Labels:		app=hello-world
+Annotations:	<none>
+Subsets:
+  Addresses:		172.17.0.10,172.17.0.11,172.17.0.12,172.17.0.13,172.17.0.14,172.17.0.15,172.17.0.16,172.17.0.17,172.17.0.18,172.17.0.19,172.17.0.20,172.17.0.21,172.17.0.22,172.17.0.23,172.17.0.4,172.17.0.5,172.17.0.6,172.17.0.7,172.17.0.8,172.17.0.9
+  NotReadyAddresses:	<none>
+  Ports:
+    Name	Port	Protocol
+    ----	----	--------
+    <unset>	8080	TCP
+
+Events:	<none>
+sh-3.2# --------------------
+sh: --------------------: command not found
+sh-3.2# NOTE:  Updating Apps and Services usin[K[K[K[K
+sh: NOTE:: command not found
+sh-3.2# NOTE:  Labels
+sh: NOTE:: command not found
+sh-3.2# ls -ahl
+total 8
+drwxr-xr-x   7 kraust  staff   238B Sep 12 11:16 .
+d---r-xr-x+ 25 kraust  staff   850B Sep 11 16:00 ..
+drwxr-xr-x  10 kraust  staff   340B Sep 11 16:00 .git
+drwxr-xr-x   4 tkraus  staff   136B Sep 12 10:45 Pods
+-rw-r--r--   1 kraust  staff    18B Sep 11 16:09 README.md
+drwxr-xr-x   3 kraust  staff   102B Sep 12 11:05 Replication-Controller
+drwxr-xr-x   4 root    staff   136B Sep 12 12:14 Services
+sh-3.2# 
+sh-3.2# exit
+exit
+
+Script done on Tue Sep 12 12:56:41 2017
