@@ -1,0 +1,256 @@
+Script started on Wed Sep 13 11:55:42 2017
+
+bash-3.2$ pwd
+/Users/kraust/gitHub/kubernetes-work
+bash-3.2$ kubectl delete rc hello-rc
+
+bash-3.2$ kubectl describe svc hello-svc
+Name:			hello-svc
+Namespace:		default
+Labels:			app=hello-world
+Annotations:		<none>
+Selector:		app=hello-world
+Type:			NodePort
+IP:			10.0.0.125
+Port:			<unset>	8080/TCP
+NodePort:		<unset>	30001/TCP
+Endpoints:		<none>
+Session Affinity:	None
+Events:			<none>
+
+bash-3.2$ kubectl create -f Deployments/deployment.yml 
+deployment "hello-deploy" created
+
+bash-3.2$ kubectl describe deploy hello-deploy
+Name:			hello-deploy
+Namespace:		default
+CreationTimestamp:	Wed, 13 Sep 2017 11:58:37 -0400
+Labels:			app=hello-world
+Annotations:		deployment.kubernetes.io/revision=1
+Selector:		app=hello-world
+Replicas:		10 desired | 10 updated | 10 total | 10 available | 0 unavailable
+StrategyType:		RollingUpdate
+MinReadySeconds:	0
+RollingUpdateStrategy:	1 max unavailable, 1 max surge
+Pod Template:
+  Labels:	app=hello-world
+  Containers:
+   hello-pod:
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Port:		8080/TCP
+    Environment:	<none>
+    Mounts:		<none>
+  Volumes:		<none>
+Conditions:
+  Type		Status	Reason
+  ----		------	------
+  Available 	True	MinimumReplicasAvailable
+OldReplicaSets:	<none>
+NewReplicaSet:	hello-deploy-2512326018 (10/10 replicas created)
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----			-------------	--------	------			-------
+  <invalid>	<invalid>	1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2512326018 to 10
+
+NOTE:   Also checked in Web Kubernetes Dashboard - 192.168.64.3:30000   under Deployments. I could Edit and Update the Configuration - Change Repli 
+cas etc. . . .
+
+bash-3.2$ kubectl describe deploy hello-deploy
+
+Name:			hello-deploy
+Namespace:		default
+CreationTimestamp:	Wed, 13 Sep 2017 11:58:37 -0400
+Labels:			app=hello-world
+Annotations:		deployment.kubernetes.io/revision=1
+Selector:		app=hello-world
+Replicas:		11 desired | 11 updated | 11 total | 11 available | 0 unavailable
+StrategyType:		RollingUpdate
+MinReadySeconds:	0
+RollingUpdateStrategy:	1 max unavailable, 1 max surge
+Pod Template:
+  Labels:	app=hello-world
+  Containers:
+   hello-pod:
+    Image:		nigelpoulton/pluralsight-docker-ci:latest
+    Port:		8080/TCP
+    Environment:	<none>
+    Mounts:		<none>
+  Volumes:		<none>
+Conditions:
+  Type		Status	Reason
+  ----		------	------
+  Available 	True	MinimumReplicasAvailable
+OldReplicaSets:	<none>
+NewReplicaSet:	hello-deploy-2512326018 (11/11 replicas created)
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----			-------------	--------	------			-------
+  2m		2m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2512326018 to 10
+  18s		18s		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2512326018 to 11
+
+bash-3.2$ kubectl get sv[Kervices[K
+NAME         CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
+hello-svc    10.0.0.125   <nodes>       8080:30001/TCP   23h
+kubernetes   10.0.0.1     <none>        443/TCP          1d
+
+bash-3.2$ pwd
+/Users/kraust/gitHub/kubernetes-work/Deployments
+
+bash-3.2$ ls
+deployment.yml
+
+bash-3.2$ cp deployment.yml deployment-2.yml
+
+bash-3.2$ edit deployment-2.yml 
+bash-3.2$ kubectl apply -f deployment-2.yml --record
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+deployment "hello-deploy" configured
+
+bash-3.2$ kubectl rollout status deployment hello-deploy
+Waiting for rollout to finish: 2 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 2 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 2 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 4 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 4 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 4 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 6 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 6 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 6 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 8 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 8 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 8 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 1 old replicas are pending termination...
+Waiting for rollout to finish: 1 old replicas are pending termination...
+Waiting for rollout to finish: 1 old replicas are pending termination...
+Waiting for rollout to finish: 1 old replicas are pending termination...
+deployment "hello-deploy" successfully rolled out
+
+bash-3.2$ kubectl get deploy hello-deploy
+NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+hello-deploy   10        10        10           10          23m
+
+bash-3.2$ kubectl describe deployment hello-deploy
+deployments "hello-deploy"
+REVISION	CHANGE-CAUSE
+1		<none>
+2		kubectl apply --filename=deployment-2.yml --record=true
+
+NOTE:  --record=true  used for audit history seen with kubectl rollout history
+
+bash-3.2$ kubectl describe deploy hello-deploy
+Name:			hello-deploy
+Namespace:		default
+CreationTimestamp:	Wed, 13 Sep 2017 11:58:37 -0400
+Labels:			app=hello-world
+Annotations:		deployment.kubernetes.io/revision=2
+			kubectl.kubernetes.io/last-applied-configuration={"apiVersion":"extensions/v1beta1","kind":"Deployment","metadata":{"annotations":{"kubernetes.io/change-cause":"kubectl apply --filename=deployment-2.y...
+			kubernetes.io/change-cause=kubectl apply --filename=deployment-2.yml --record=true
+Selector:		app=hello-world
+Replicas:		10 desired | 10 updated | 10 total | 10 available | 0 unavailable
+StrategyType:		RollingUpdate
+MinReadySeconds:	10
+RollingUpdateStrategy:	1 max unavailable, 1 max surge
+Pod Template:
+  Labels:	app=hello-world
+  Containers:
+   hello-pod:
+    Image:		nigelpoulton/pluralsight-docker-ci:edge
+    Port:		8080/TCP
+    Environment:	<none>
+    Mounts:		<none>
+  Volumes:		<none>
+Conditions:
+  Type		Status	Reason
+  ----		------	------
+  Available 	True	MinimumReplicasAvailable
+OldReplicaSets:	<none>
+NewReplicaSet:	hello-deploy-2108007848 (10/10 replicas created)
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----			-------------	--------	------			-------
+  25m		25m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2512326018 to 10
+  23m		23m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2512326018 to 11
+  3m		3m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled down replica set hello-deploy-2512326018 to 10
+  3m		3m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2108007848 to 1
+  3m		3m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled down replica set hello-deploy-2512326018 to 9
+  3m		3m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2108007848 to 2
+  2m		2m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled down replica set hello-deploy-2512326018 to 7
+  2m		2m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2108007848 to 4
+  2m		2m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled down replica set hello-deploy-2512326018 to 5
+  2m		2m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2108007848 to 6
+  2m		2m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled down replica set hello-deploy-2512326018 to 3
+  2m		2m		4	deployment-controller			Normal		ScalingReplicaSet	(combined from similar events): Scaled down replica set hello-deploy-2512326018 to 0
+
+bash-3.2$ kubectl describe deploy hello-deploy
+Name:			hello-deploy
+Namespace:		default
+CreationTimestamp:	Wed, 13 Sep 2017 11:58:37 -0400
+Labels:			app=hello-world
+Annotations:		deployment.kubernetes.io/revision=2
+			kubectl.kubernetes.io/last-applied-configuration={"apiVersion":"extensions/v1beta1","kind":"Deployment","metadata":{"annotations":{"kubernetes.io/change-cause":"kubectl apply --filename=deployment-2.y...
+			kubernetes.io/change-cause=kubectl apply --filename=deployment-2.yml --record=true
+Selector:		app=hello-world
+Replicas:		10 desired | 10 updated | 10 total | 10 available | 0 unavailable
+StrategyType:		RollingUpdate
+MinReadySeconds:	10
+RollingUpdateStrategy:	1 max unavailable, 1 max surge
+Pod Template:
+  Labels:	app=hello-world
+  Containers:
+   hello-pod:
+    Image:		nigelpoulton/pluralsight-docker-ci:edge
+    Port:		8080/TCP
+    Environment:	<none>
+    Mounts:		<none>
+  Volumes:		<none>
+Conditions:
+  Type		Status	Reason
+  ----		------	------
+  Available 	True	MinimumReplicasAvailable
+OldReplicaSets:	<none>
+NewReplicaSet:	hello-deploy-2108007848 (10/10 replicas created)
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----			-------------	--------	------			-------
+  26m		26m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2512326018 to 10
+  24m		24m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2512326018 to 11
+  4m		4m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled down replica set hello-deploy-2512326018 to 10
+  4m		4m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2108007848 to 1
+  4m		4m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled down replica set hello-deploy-2512326018 to 9
+  4m		4m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2108007848 to 2
+  3m		3m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled down replica set hello-deploy-2512326018 to 7
+  3m		3m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2108007848 to 4
+  3m		3m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled down replica set hello-deploy-2512326018 to 5
+  3m		3m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-deploy-2108007848 to 6
+  3m		3m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled down replica set hello-deploy-2512326018 to 3
+  3m		3m		4	deployment-controller			Normal		ScalingReplicaSet	(combined from similar events): Scaled down replica set hello-deploy-2512326018 to 0
+
+bash-3.2$ curl http://192.168.64.3:30001
+<html><head><title>Pluralsight Rocks</title><link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/></head><body><div class="container"><div class="jumbotron"><h1>Yo Kubersighters!!!</h1><p>Click the button below to head over to the In Tech We Trust podcast...</p><p> <a href="http://intechwetrustpodcast.com" class="btn btn-primary">Podcast</a></p><p></p></div></div></body></html>bash-3.2$ 
+
+bash-3.2$ kubectl rollout undo deployment hello-deploy
+bash-3.2$ kubectl describe deploy hello-deploy
+deployments "hello-deploy"
+REVISION	CHANGE-CAUSE
+1		<none>
+2		kubectl apply --filename=deployment-2.yml --record=true
+
+
+bash-3.2$ kubectl rollout undo deployment hello-deploy --to-revision=1
+
+Waiting for rollout to finish: 2 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 2 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 2 out of 10 new replicas have been updated...
+...
+Waiting for rollout to finish: 8 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 8 out of 10 new replicas have been updated...
+Waiting for rollout to finish: 1 old replicas are pending termination...
+Waiting for rollout to finish: 1 old replicas are pending termination...
+Waiting for rollout to finish: 1 old replicas are pending termination...
+Waiting for rollout to finish: 1 old replicas are pending termination...
+deployment "hello-deploy" successfully rolled out
+
+bash-3.2$ exit
+exit
+
+Script done on Wed Sep 13 12:30:08 2017
